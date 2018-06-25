@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1528949822328.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "AF0CA35E",
+    "lastKnownWriteTime" : 8589934336,
+    "last_content_update" : 1528949822328,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "9EC076CF",
+        "caption" : "sp486RRCC",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=sp486RRCC&cache_key=9EC076CF",
+        "displayedObservations" : 486,
+        "environment" : "",
+        "object" : "sp486RRCC",
+        "preview" : 0,
+        "totalObservations" : 486,
+        "variables" : 486
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
