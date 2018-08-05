@@ -1,4 +1,6 @@
 # compute efficient portfolio subject to target return with no short sales
+install.packages("IntroCompFinR", repos="http://R-Forge.R-project.org")
+library(IntroCompFinR)
 
 library(MVFPortfolio)
 library(readr)
@@ -8,9 +10,9 @@ SP486Symbols = as.list(sp486$Ticker)
 
 begindate = "2015-07-12"
 sourc ="yahoo"
-#assetClassSymbols =list('VTI','VO','VB','SHY','BND', 'TLT', 'TIP','MUB','VEU','VSS','VWO','VNQ','DBC','GLD')
-#namesClass = c(assetClassSymbols)
-sp486data = AdjustedPrice(SP486Symbols, begindate, sourc)
+assetClassSymbols =list('VTI','VO','VB','SHY','BND', 'TLT', 'TIP','MUB','VEU','VSS','VWO','VNQ','DBC','GLD')
+namesClass = c(assetClassSymbols)
+sp486data = AdjustedPrice(namesClass, begindate, sourc)
 
 #bbsymbols=c("BRK-B", "BF-B")
 #class(bbsymbols)
@@ -53,7 +55,7 @@ PickedOutPlot = function (fulldataset, pickdataset){
   plot(AnnualStd, AnnualMeans, main = "Securities Performances")
   text(AnnualStd, AnnualMeans, labels=rownames(AnnualStd), cex= 0.7, pos=3)
   plot(rstdwtable$Std, rstdwtable$Target_Return)
-  
+
   pints(series2, col=2)
 }
 #sharePrice

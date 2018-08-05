@@ -1,22 +1,4 @@
-if(!require(IntroCompFinR)){
-  install.packages("IntroCompFinR", repos="http://R-Forge.R-project.org")
-  library(IntroCompFinR)
-}
 
-if(!require(quantmod)){
-  install.packages("quantmod")
-  library(quantmod)
-}
-
-if(!require(PerformanceAnalytics)){
-  install.packages("PerformanceAnalytics")
-  library(PerformanceAnalytics)
-}
-
-if(!require(tibble)){
-  install.packages("tibble")
-  library(tibble)
-}
 
 AdjustedPrice= function(symbol_list, fromtime, sourc){
   library(quantmod)
