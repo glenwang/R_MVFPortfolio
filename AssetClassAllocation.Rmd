@@ -1,0 +1,52 @@
+---
+title: "Asset Class Allocation with Minimum-Variance Frontier Model"
+author: "Glen Wang"
+date: "8/4/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Install and active packages
+```{r eval=FALSE}
+install.packages("devtools")
+library(devtools)
+install.packages("IntroCompFinR", repos="http://R-Forge.R-project.org")
+install_github("glenwang/R_MVFPortfolio/tree/master/MVFPortfolio")
+
+```{r message=F, warning=F}
+library(IntroCompFinR)
+library(MVFPortfolio)
+```
+
+Select date range and securities. Then fetch adjusted price data from Yahoo Finance. 
+```{r message=F, warning=F}
+begindate = "2016-07-12"
+sourc ="yahoo"
+assetClassSymbols =c('VTI','VO','VB','SHY','BND', 'TLT', 'TIP','MUB','VEU','VSS','VWO','VNQ','DBC','GLD')
+assetClassPriceData = AdjustedPrice(assetClassSymbols, begindate, sourc)
+```
+
+```{r}
+head(assetClassPriceData)
+tail(assetClassPriceData)
+```
+Create tables of return, risk, correlation and covariance. 
+```{r message=F, warning=F}
+assetClassReturnRiskTable = AnnualReturnRisk(assetClassPriceData)
+head(assetClassReturnRiskTable)
+assetClassReturnRiskCorrelationTable = RSTDCorr(assetClassPriceData)
+head(assetClassReturnRiskCorrelationTable)
+asssetClassCovarianceMatrixTable =CovMatrix(assetClassPriceData)
+head(asssetClassCovarianceMatrixTable)
+```
+
+For each specified target return, create the asset classes' weights table and chart. Then draw each portfolio in the efficient frontier plot. 
+```{r message=F, warning=F}
+TargetReturn = c(.001, .003, .005, .007, .01, .03, .05, .07, .1, .11)
+riskfree= .0293
+assetClassReturnRiskWeightsTable = RSTDWtable(assetClassPriceData, TargetReturn, riskfree)
+assetClasssEfficientFrontierPlot = efplot(assetClassReturnRiskWeightsTable)
+```
+
